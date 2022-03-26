@@ -25,14 +25,19 @@ const giveaway = document.querySelector(".giveaway");
 const deadline = document.querySelector(".deadline");
 let items = document.querySelectorAll(".deadline-format h4");
 
-
-let futureDate = new Date(2022,2,25,7,30,0,0);
+// this is because it will have always a future time for gifts.
+let tempDate = new Date();
+let tempYear = tempDate.getFullYear();
+let tempMonth = tempDate.getMonth();
+let tempDay = tempDate.getDate();
+let futureDate = new Date(tempYear,tempMonth,tempDay + 10 ,7,30,0,0);
 
 const year = futureDate.getFullYear();
 const hours = futureDate.getHours();
 const minute = futureDate.getMinutes();
 const date = futureDate.getDate();
 
+// we get the name of the month and the days of the week with arrays.
 let month = months[futureDate.getMonth()];
 let weekday = weekDays[futureDate.getDay()];
 
@@ -52,11 +57,6 @@ function getRemaindingTime(){
     let hours = Math.floor((t % oneDay) / oneHour);
     let minutes = Math.floor((t % oneHour) / oneMinute);
     let seconds = Math.floor((t %oneMinute )/ 1000);
-
-    // console.log(days)
-    // console.log(hours)
-    // console.log(minutes)
-    // console.log(seconds)
 
     let values = [days, hours, minutes, seconds]
 
